@@ -139,6 +139,7 @@ int main() {
   //gemmini_mxquant_config_mvout(1024, (uint64_t)scale_factors);
   gemmini_mxquant_config_mvout((uint64_t)scale_factors, tiles_I, tiles_J, tiles_K, 0, 0, QUANT_LUT_UPDATE_GRANULARITY);
   gemmini_extended3_config_ex(WEIGHT_STATIONARY, 0, 0, ACC_SCALE_IDENTITY, 1, 1, 0, 0, false, 1, 1, 3, 1);
+  uint64_t _mmt0 = read_cycles();
 
    // MVIN B
 
@@ -245,6 +246,8 @@ int main() {
 
   gemmini_fence();
 
+  uint64_t _mmt1 = read_cycles();
+  printf("MMCYCLES %lu\n", (unsigned long)(_mmt1 - _mmt0));
 #ifdef SPIKE_SIM
   // BF16 output: M*N bf16 values.
   gemmini_mx_read_smem(&C_hw[0][0], SPAD_DEST * 16, MATMUL_M * MATMUL_N);

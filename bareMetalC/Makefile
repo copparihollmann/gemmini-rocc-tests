@@ -1,6 +1,13 @@
 include $(abs_top_srcdir)/Makefrag
 
 tests = \
+	attn_fp8_vcs \
+	attn_hwsm_probe \
+	attn_fp8_hwsm \
+	attn_fp8_full \
+	int_softmax_probe \
+	int_probe \
+	fpu_probe \
 	mvin_mvout \
 	mvin_mvout_zeros \
 	mvin_mvout_stride \
@@ -69,14 +76,23 @@ mx_tests = \
 	matmul_tiled_fp4_64x64_DRAMMvout \
 	matmul_tiled_fp6_128x128 \
 	matmul_tiled_fp6_128x128x512 \
+	matmul_tiled_fp6_128x128x512_LEGAL \
 	matmul_tiled_fp6_128x128x512_requant \
 	matmul_tiled_fp4_128x128 \
 	matmul_tiled_fp4_128x128x512 \
+	matmul_tiled_fp4_128x128x512_LEGAL \
 	matmul_tiled_fp8_64x64 \
+	matmul_tiled_fp8_64x64_LEGAL \
 	matmul_tiled_fp8_64x64_DRAMMvout \
 	matmul_tiled_fp8_64x64_smem_mvout \
 	matmul_tiled_fp8_128x128 \
+	matmul_tiled_fp8_128x128_WINNER \
+	matmul_tiled_fp8_128x128_LEGAL \
+	matmul_tiled_fp8_128x128_LEGAL2 \
 	matmul_tiled_fp8_128x128x256 \
+	matmul_tiled_fp8_128x128x256_WINNER \
+	matmul_tiled_fp8_128x128x256_LEGAL \
+	matmul_tiled_fp8_128x128x256_DBUF \
 	matmul_tiled_fp8_128x128x256_DRAMMvout \
 	matmul_tiled_fp8_64x64_requant \
 	matmul_tiled_fp8_128x128_requant \
