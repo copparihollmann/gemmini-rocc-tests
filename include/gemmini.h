@@ -914,7 +914,11 @@ static elem_t scale_and_sat(acc_t x, int act, acc_scale_t scale, acc_scale_t ber
     const acc_t q = x;
 
     const acc_t q_sign = q < 0 ? -1 : 1;
-    const acc_t q_clipped = abs(q) > (-qb) ? (-qb) : abs(q);
+    // Compute |q| without `abs()`: acc_t is uint64_t in the default params, which makes
+    // the C `abs(int)` / C++ `abs(long long)` overloads ambiguous once real libc headers
+    // are on the include path (radiance-kernels supplies them via MU_LIBC_INCLUDE).
+    const acc_t q_abs = q < 0 ? (acc_t)(-q) : q;
+    const acc_t q_clipped = q_abs > (-qb) ? (-qb) : q_abs;
     const acc_t q_poly = (q_clipped + qb)*(q_clipped + qb) + qc;
     const acc_t q_erf = q_sign * q_poly;
 
