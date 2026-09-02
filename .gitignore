@@ -6,3 +6,9 @@ configure
 .ipynb_checkpoints
 *.pyc
 build_spike
+
+# Generated MX test tensors (regenerable via autocomp scripts/muon/mx_golden).
+# ~90MB across 122 headers -- kept out of history deliberately.
+include/mxgen_*.h
+include/fmttest_*.h
+include/_forktest_*.h
