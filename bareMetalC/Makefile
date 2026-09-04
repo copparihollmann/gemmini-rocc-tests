@@ -1,6 +1,10 @@
 include $(abs_top_srcdir)/Makefrag
 
 tests = \
+	counter_mm \
+	int8_dma_probe \
+	region_probe \
+	phase_mm_probe \
 	mvin_mvout \
 	mvin_mvout_zeros \
 	mvin_mvout_stride \
@@ -39,7 +43,11 @@ tests = \
 	conv_perf \
 	conv_dw_perf \
 	tiled_matmul_os \
+	matmul_1x1x2048_os \
+	matmul_1x1x2048_ws \
 	tiled_matmul_ws \
+	tiled_matmul_ws32 \
+	tiled_matmul_128 \
 	tiled_matmul_ws_At \
 	tiled_matmul_ws_Bt \
 	tiled_matmul_ws_full_C \
@@ -58,8 +66,15 @@ tests = \
 	gemmini_counter \
 	template \
 	matmul_ws_mx_generic \
+	dispatch1_repro \
 	matmul_tiled_fp8 \
 	matmul_single_tile_test \
+	dronet_conv1_repro \
+	dronet_conv1_sweep \
+	gemmini_sweep \
+	gemmini_heldout \
+	dronet_conv1_os \
+	dronet_conv1_tile_i1 \
 
 tests_baremetal = $(tests:=-baremetal)
 
