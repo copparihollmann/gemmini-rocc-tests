@@ -1,6 +1,7 @@
 include $(abs_top_srcdir)/Makefrag
 
 tests = \
+	auto_comp_test \
 	mvin_mvout \
 	mvin_mvout_zeros \
 	mvin_mvout_stride \
@@ -38,6 +39,7 @@ tests = \
 	conv_dw_perf \
 	tiled_matmul_os \
 	tiled_matmul_ws \
+	tiled_matmul_ws_dronet_3136x32x27 \
 	tiled_matmul_ws_At \
 	tiled_matmul_ws_Bt \
 	tiled_matmul_ws_full_C \
